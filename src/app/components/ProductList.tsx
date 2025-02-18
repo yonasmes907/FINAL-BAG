@@ -1,143 +1,277 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
-const ProductList = () => {
+const products = [
+  {
+    id: 1,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/kaki22.jpg",
+    img2: "/kaki1.jpg",
+  },
+  {
+    id: 2,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/dup50.jpg",
+    img2: "/dup1.jpg",
+  },
+  {
+    id: 3,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/kaki33.jpg",
+    img2: "/kaki3.jpg",
+  },
+  {
+    id: 4,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/dup4.jpg",
+    img2: "/dup3.jpg",
+  },
+  {
+    id: 5,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/dup6.jpg",
+    img2: "/dup5.jpg",
+  },
+  {
+    id: 6,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/kaki6.jpg",
+    img2: "/kaki5.jpg",
+  },
+  {
+    id: 7,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/dup8.jpg",
+    img2: "/dup7.jpg",
+  },
+  {
+    id: 8,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/kaki8.jpg",
+    img2: "/kaki7.jpg",
+  },
+  {
+    id: 9,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/kaki10.jpg",
+    img2: "/kaki9.jpg",
+  },
+  {
+    id: 10,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/dup10.jpg",
+    img2: "/dup9.jpg",
+  },
+  {
+    id: 11,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/kaki12.jpg",
+    img2: "/kaki11.jpg",
+  },
+  {
+    id: 12,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/dup12.jpg",
+    img2: "/dup11.jpg",
+  },
+  {
+    id: 13,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/dup14.jpg",
+    img2: "/dup13.jpg",
+  },
+  {
+    id: 14,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/kaki14.jpg",
+    img2: "/kaki13.jpg",
+  },
+  {
+    id: 15,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/dup16.jpg",
+    img2: "/dup15.jpg",
+  },
+  {
+    id: 16,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/kaki16.jpg",
+    img2: "/kaki15.jpg",
+  },
+  {
+    id: 17,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/dup32.jpg",
+    img2: "/dup33.jpg",
+  },
+  {
+    id: 18,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/kaki20.jpg",
+    img2: "/kaki21.jpg",
+  },
+  {
+    id: 19,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/dup34.jpg",
+    img2: "/dup35.jpg",
+  },
+  {
+    id: 20,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/kaki26.jpg",
+    img2: "/kaki27.jpg",
+  },
+  {
+    id: 21,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/dup36.jpg",
+    img2: "/dup37.jpg",
+  },
+  {
+    id: 22,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/kaki28.jpg",
+    img2: "/kaki29.jpg",
+  },
+  {
+    id: 23,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/dup40.jpg",
+    img2: "/dup41.jpg",
+  },
+  {
+    id: 24,
+    name: "ካኪ የወረቀት ቦርሳ",
+    price: "38",
+    quality: "መካከለኛ",
+    img1: "/kaki32.jpg",
+    img2: "/kaki31.jpg",
+  },
+  // Add more products as needed
+];
+
+const Products = () => {
+  const [orderedItem, setOrderedItem] = useState(null);
+
+  const handleOrder = (item: any) => {
+    setOrderedItem(item);
+    const message = encodeURIComponent(
+      `ሰላም! ማዘዝ እፈልጋለሁ\n\n🛍  የምርት ስም:- ${item.name}\n💰 ዋጋ:- $${item.price}\n📦 የምርት ዓይነት:- ${item.quality}\n\nተጨማሪ ዝርዝሮችን እፈልጋለሁ::`
+    );
+    const telegramLink = `https://t.me/Tnksgod12?text=${message}`;
+    window.open(telegramLink, "_blank");
+  };
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    checkScreenSize(); // Initial check
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
   return (
-    <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
-      <Link
-        href="/"
-        className=" bg-slate-300 rounded-md p-3 w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]"
-      >
-        <div className="relative w-full h-80">
-          <Image
-            src="https://i.pinimg.com/736x/a5/94/44/a594444d2cf48468541563d2142a8213.jpg"
-            alt=""
-            fill
-            sizes="23vw"
-            className="absolute  object-cover rounded-md z-10 hover:opacity-0 transition-opacity easy duration-500"
-          />
-          <Image
-            src="https://i.pinimg.com/736x/7c/88/d2/7c88d29ee4e11151a623843f806a900b.jpg"
-            alt=""
-            fill
-            sizes="23vw"
-            className="absolute object-cover rounded-md"
-          />{" "}
-        </div>
-        <div className="flex justify-between">
-          <span className="text-xl font-bold">ካኪ የወረቀት ቦርሳ</span>
-          <span className="text-xl font-bold text-black">38</span>
-        </div>
-        <div className="text-ልግ text-gray-500">መካከለኛ</div>
-        <button
-          className="rounded-2xl  bg-red-600 text-white py-2 w-max px-4 text-xs transition-all duration-300 ease-in-out 
-                   hover:bg-red-700 hover:ring-red-500"
-        >
-          Order This Item
-        </button>
-      </Link>
+    <div className="mt-28 px-4">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {products.map((product, index) => (
+          <React.Fragment key={product.id}>
+            <div className="border-x-2 border-zinc-950 rounded-md p-3 w-full flex flex-col gap-4">
+              <div className="relative w-full h-80">
+                <Image
+                  src={product.img1}
+                  alt={product.name}
+                  fill
+                  sizes="23vw"
+                  className="absolute object-cover rounded-md z-10 hover:opacity-0 transition-opacity ease-in duration-500"
+                />
+                <Image
+                  src={product.img2}
+                  alt={product.name}
+                  fill
+                  sizes="23vw"
+                  className="absolute object-cover rounded-md"
+                />
+              </div>
+              <div className="flex justify-between">
+                <span className="text-xl font-bold">{product.name}</span>
+                <span className="text-xl font-bold text-black">
+                  ${product.price}
+                </span>
+              </div>
+              <div className="text-lg text-gray-500">{product.quality}</div>
+              <button
+                onClick={() => handleOrder(product)}
+                className="rounded-2xl bg-red-600 text-white py-2 w-max px-4 text-xs transition-all duration-300 ease-in-out hover:bg-red-700 hover:ring-red-500"
+              >
+                Order This Item
+              </button>
+            </div>
 
-      <Link
-        href="/"
-        className=" bg-slate-300 rounded-md p-3 w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]"
-      >
-        <div className="relative w-full h-80">
-          <Image
-            src="https://i.pinimg.com/736x/53/fa/9b/53fa9b8ce3f11519ef6ea8ba6c5eb3db.jpg"
-            alt=""
-            fill
-            sizes="23vw"
-            className="absolute  object-cover rounded-md z-10 hover:opacity-0 transition-opacity easy duration-500"
-          />
-          <Image
-            src="https://i.pinimg.com/236x/81/7c/43/817c4306b3c1425c1eadf103826594c2.jpg"
-            alt=""
-            fill
-            sizes="23vw"
-            className="absolute object-cover rounded-md"
-          />{" "}
-        </div>
-        <div className="flex justify-between">
-          <span className="text-xl font-bold">Duplex የወረቀት ቦርሳ</span>
-          <span className="text-xl font-bold text-black">38</span>
-        </div>
-        <div className="text-ልግ text-gray-500">መካከለኛ</div>
-        <button
-          className="rounded-2xl  bg-red-600 text-white py-2 w-max px-4 text-xs transition-all duration-300 ease-in-out 
-                   hover:bg-red-700 hover:ring-red-500"
-        >
-          Order This Item
-        </button>
-      </Link>
-
-      <Link
-        href="/"
-        className=" bg-slate-300 rounded-md p-3 w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]"
-      >
-        <div className="relative w-full h-80">
-          <Image
-            src="https://i.pinimg.com/736x/ad/90/d1/ad90d11c807afbd824c013c12cc242ff.jpg"
-            alt=""
-            fill
-            sizes="23vw"
-            className="absolute  object-cover rounded-md z-10 hover:opacity-0 transition-opacity easy duration-500"
-          />
-          <Image
-            src="https://i.pinimg.com/236x/77/45/11/774511435cf7ce5c76cbec159c465996.jpg"
-            alt=""
-            fill
-            sizes="23vw"
-            className="absolute object-cover rounded-md"
-          />{" "}
-        </div>
-        <div className="flex justify-between">
-          <span className="text-xl font-bold">ካኪ የወረቀት ቦርሳ</span>
-          <span className="text-xl font-bold text-black">38</span>
-        </div>
-        <div className="text-ልግ text-gray-500">መካከለኛ</div>
-        <button
-          className="rounded-2xl  bg-red-600 text-white py-2 w-max px-4 text-xs transition-all duration-300 ease-in-out 
-                   hover:bg-red-700 hover:ring-red-500"
-        >
-          Order This Item
-        </button>
-      </Link>
-
-      <Link
-        href="/"
-        className=" bg-slate-300 rounded-md p-3 w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]"
-      >
-        <div className="relative w-full h-80">
-          <Image
-            src="https://i.pinimg.com/736x/0b/68/23/0b6823a50ebbab85dda696e11eba1fc4.jpg"
-            alt=""
-            fill
-            sizes="23vw"
-            className="absolute  object-cover rounded-md z-10 hover:opacity-0 transition-opacity easy duration-500"
-          />
-          <Image
-            src="https://i.pinimg.com/736x/64/20/90/642090d66cc8c03f4b278ac22e14bf3e.jpg"
-            alt=""
-            fill
-            sizes="23vw"
-            className="absolute object-cover rounded-md"
-          />{" "}
-        </div>
-        <div className="flex justify-between">
-          <span className="text-xl font-bold">ካኪ የወረቀት ቦርሳ</span>
-          <span className="text-xl font-bold text-black">38</span>
-        </div>
-        <div className="text-ልግ text-gray-500">መካከለኛ</div>
-        <button
-          className="rounded-2xl  bg-red-600 text-white py-2 w-max px-4 text-xs transition-all duration-300 ease-in-out 
-                   hover:bg-red-700 hover:ring-red-500"
-        >
-          Order This Item
-        </button>
-      </Link>
+            {/* Ad Banner After 4 Products on Mobile and 8 on Desktop */}
+            {(index + 1) % (isMobile ? 4 : 8) === 0 && (
+              <div className="col-span-2 lg:col-span-4 flex justify-center items-center bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-semibold text-xl rounded-md h-10 shadow-lg mt-5 mb-5">
+                📢 ልዩ ቅናሽ፡ በጅምላ ትእዛዝ 10% ቅናሽ ያግኙ! አሁን ይዘዙ!{" "}
+              </div>
+            )}
+          </React.Fragment>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default ProductList;
+export default Products;

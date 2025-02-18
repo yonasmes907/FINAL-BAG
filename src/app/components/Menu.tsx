@@ -6,6 +6,10 @@ import React, { useState } from "react";
 
 const Menu = () => {
   const [open, setOpen] = useState(false);
+
+  // Function to close the menu
+  const closeMenu = () => setOpen(false);
+
   return (
     <div>
       <Image
@@ -17,10 +21,11 @@ const Menu = () => {
         onClick={() => setOpen((prev) => !prev)}
       />
       {open && (
-        <div className="absolute bg-black text-white left-0 top-20 w-full h-[calc(100vh-80px)] flex flex-col items-center justify-center gap-8 text-xl z-10">
+        <div className="absolute bg-black pb-72 text-white left-0 top-20 w-full h-[calc(100vh-80px)] flex flex-col items-center justify-center gap-8 text-xl z-10">
           <Link
             href="/"
             className="text-3xl font-medium text-white relative overflow-hidden group"
+            onClick={closeMenu} // Close menu when clicked
           >
             <span className="group-hover:text-gray-800 transition duration-300 ease-in-out">
               Home
@@ -30,6 +35,7 @@ const Menu = () => {
           <Link
             href="/products"
             className="text-3xl font-medium text-white relative overflow-hidden group"
+            onClick={closeMenu} // Close menu when clicked
           >
             <span className="group-hover:text-gray-800 transition duration-300 ease-in-out">
               Products
@@ -37,8 +43,9 @@ const Menu = () => {
             <span className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-blue-400 to-yellow-400 group-hover:w-full transition-all duration-300 ease-in-out"></span>
           </Link>
           <Link
-            href="/about-us"
+            href="/about"
             className="text-3xl font-medium text-white relative overflow-hidden group"
+            onClick={closeMenu} // Close menu when clicked
           >
             <span className="group-hover:text-gray-800 transition duration-300 ease-in-out">
               About Us
@@ -46,8 +53,9 @@ const Menu = () => {
             <span className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-blue-400 to-yellow-400 group-hover:w-full transition-all duration-300 ease-in-out"></span>
           </Link>
           <Link
-            href="/contact-us"
+            href="/contact"
             className="text-3xl font-medium text-white relative overflow-hidden group"
+            onClick={closeMenu} // Close menu when clicked
           >
             <span className="group-hover:text-gray-800 transition duration-300 ease-in-out">
               Contact Us

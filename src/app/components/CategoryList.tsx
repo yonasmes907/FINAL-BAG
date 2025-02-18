@@ -1,127 +1,80 @@
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+
+const categories = [
+  {
+    id: 1,
+    name: "ካኪ ቦርሳ",
+    imageUrl: "/kaki26.jpg", // Image stored in the public folder
+    description:
+      "Explore our stylish and unique paper bags in various colors and designs.",
+    route: "/kaki", // Route to navigate when clicked
+  },
+  {
+    id: 2,
+    name: "Duplex ቦርሳ",
+    imageUrl: "/dup50.jpg", // Image stored in the public folder
+    description:
+      "Check out our latest collection of high-quality duplex paper bags.",
+    route: "/duplex", // Route to navigate when clicked
+  },
+];
 
 const CategoryList = () => {
   return (
-    <div className="px-4 overflow-x-scroll scrollbar-hide">
-      <div className="flex gap-2 md:gap-8">
-        <Link
-          href="/list?cat=test"
-          className="flex-shrink-0 mr-12 sm:w-1/2 lg:w-1/4 xl:w-1/6"
-        >
-          <div className="relative bg-slate-100 w-full h-72">
-            <Image
-              src="https://i.pinimg.com/736x/22/94/e9/2294e98d3a2489bf4cab64d2181c0208.jpg"
-              alt=""
-              fill
-              sizes="20vw"
-              className="object-cover"
-            />
+    <div className="mt-0 px-4 m-20">
+      <h1 className="text-center -mt-10 text-4xl font-bold text-gray-800 mb-16">
+        Explore Our <span className="text-red-500">Categories</span>
+      </h1>
+      <div className="flex flex-col md:flex-row gap-5">
+        <Link href="/kaki">
+          <div className="flex flex-col md:flex-row bg-slate-300 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 ease-in-out rounded-lg overflow-hidden cursor-pointer">
+            <div className="md:w-1/2 relative">
+              <Image
+                src="/kaki26.jpg"
+                alt="ካኪ ቦርሳዎች"
+                layout="fill"
+                objectFit="cover"
+                className="w-full h-full"
+              />
+            </div>
+            <div className="md:w-1/2 p-6 flex flex-col justify-between">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                ካኪ ቦርሳዎች
+              </h3>
+              <p className="text-gray-600 mb-4">
+                የእኛን ቆንጆ እና ልዩ የሆኑ የወረቀት ቦርሳዎችን በተለያዩ ቀለማት እና ንድፎች ያገኛሉ፡፡
+              </p>
+              <button className="self-start px-6 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition duration-300">
+                Shop Now
+              </button>
+            </div>
           </div>
-          <h1 className="mt-8 font-light text-xl tracking-wide">All Sizes</h1>
         </Link>
-        <Link
-          href="/list?cat=test"
-          className="flex-shrink-0 mr-12 sm:w-1/2 lg:w-1/4 xl:w-1/6"
-        >
-          <div className="relative bg-slate-100 w-full h-72">
-            <Image
-              src="https://i.pinimg.com/236x/72/b4/b9/72b4b94be72b071d5ff24d797ed811fa.jpg"
-              alt=""
-              fill
-              sizes="20vw"
-              className="object-cover"
-            />
+        <Link href="/duplex">
+          <div className="flex flex-col md:flex-row bg-slate-300 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 ease-in-out rounded-lg overflow-hidden cursor-pointer">
+            <div className="md:w-1/2 relative">
+              <Image
+                src="/dup50.jpg"
+                alt="Duplex ቦርሳዎች"
+                layout="fill"
+                objectFit="cover"
+                className="w-full h-full"
+              />
+            </div>
+            <div className="md:w-1/2 p-6 flex flex-col justify-between">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                Duplex ቦርሳዎች
+              </h3>
+              <p className="text-gray-600 mb-4">
+                ከፍተኛ ጥራት ያለው Duplex ወረቀት የቅርብ ጊዜ ስብስባችንን ይመልከቱ!
+              </p>
+              <button className="self-start px-6 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition duration-300">
+                Shop Now
+              </button>
+            </div>
           </div>
-          <h1 className="mt-8 font-light text-xl tracking-wide">
-            Category Name
-          </h1>
-        </Link>
-        <Link
-          href="/list?cat=test"
-          className="flex-shrink-0 mr-12 sm:w-1/2 lg:w-1/4 xl:w-1/6"
-        >
-          <div className="relative bg-slate-100 w-full h-72">
-            <Image
-              src="https://png.pngtree.com/png-vector/20240827/ourlarge/pngtree-brown-paper-shopping-bag-with-black-handles-mockup-png-image_13625928.png"
-              alt=""
-              fill
-              sizes="20vw"
-              className="object-cover"
-            />
-          </div>
-          <h1 className="mt-8 font-light text-xl tracking-wide">
-            Category Name
-          </h1>
-        </Link>
-        <Link
-          href="/list?cat=test"
-          className="flex-shrink-0 mr-12 sm:w-1/2 lg:w-1/4 xl:w-1/6"
-        >
-          <div className="relative bg-slate-100 w-full h-72">
-            <Image
-              src="https://png.pngtree.com/png-vector/20240827/ourlarge/pngtree-brown-paper-shopping-bag-with-black-handles-mockup-png-image_13625928.png"
-              alt=""
-              fill
-              sizes="20vw"
-              className="object-cover"
-            />
-          </div>
-          <h1 className="mt-8 font-light text-xl tracking-wide">
-            Category Name
-          </h1>
-        </Link>
-        <Link
-          href="/list?cat=test"
-          className="flex-shrink-0 mr-12 sm:w-1/2 lg:w-1/4 xl:w-1/6"
-        >
-          <div className="relative bg-slate-100 w-full h-72">
-            <Image
-              src="https://png.pngtree.com/png-vector/20240827/ourlarge/pngtree-brown-paper-shopping-bag-with-black-handles-mockup-png-image_13625928.png"
-              alt=""
-              fill
-              sizes="20vw"
-              className="object-cover"
-            />
-          </div>
-          <h1 className="mt-8 font-light text-xl tracking-wide">
-            Category Name
-          </h1>
-        </Link>
-        <Link
-          href="/list?cat=test"
-          className="flex-shrink-0 mr-12 sm:w-1/2 lg:w-1/4 xl:w-1/6"
-        >
-          <div className="relative bg-slate-100 w-full h-72">
-            <Image
-              src="https://png.pngtree.com/png-vector/20240827/ourlarge/pngtree-brown-paper-shopping-bag-with-black-handles-mockup-png-image_13625928.png"
-              alt=""
-              fill
-              sizes="20vw"
-              className="object-cover"
-            />
-          </div>
-          <h1 className="mt-8 font-light text-xl tracking-wide">
-            Category Name
-          </h1>
-        </Link>
-        <Link
-          href="/list?cat=test"
-          className="flex-shrink-0 mr-12 sm:w-1/2 lg:w-1/4 xl:w-1/6"
-        >
-          <div className="relative bg-slate-100 w-full h-72">
-            <Image
-              src="https://png.pngtree.com/png-vector/20240827/ourlarge/pngtree-brown-paper-shopping-bag-with-black-handles-mockup-png-image_13625928.png"
-              alt=""
-              fill
-              sizes="20vw"
-              className="object-cover"
-            />
-          </div>
-          <h1 className="mt-8 font-light text-xl tracking-wide">
-            Category Name
-          </h1>
         </Link>
       </div>
     </div>

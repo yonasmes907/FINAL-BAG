@@ -4,6 +4,7 @@ import Menu from "./Menu";
 import Image from "next/image";
 import SearchBar from "./SearchBar";
 import NavIcons from "./NavIcons";
+import NavLinks from "./NavLinks";
 
 const Navbar = () => {
   return (
@@ -46,26 +47,8 @@ const Navbar = () => {
               BYY
             </div>
           </Link>
-
-          <div className="hidden lg:flex gap-12">
-            {["Home", "Products", "About Us", "Contact Us"].map(
-              (item, index) => (
-                <Link
-                  key={index}
-                  href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="text-lg font-medium text-gray-700 relative overflow-hidden group"
-                >
-                  <span className="group-hover:text-gray-800 transition duration-300 ease-in-out">
-                    {item}
-                  </span>
-                  <span className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-blue-400 to-yellow-400 group-hover:w-full transition-all duration-300 ease-in-out"></span>
-                </Link>
-              )
-            )}
-          </div>
+          <NavLinks />
         </div>
-
-        {/* Right Side (Search Bar and Icons) */}
         <div className="flex items-center gap-20">
           {/* <SearchBar /> */}
           <NavIcons />

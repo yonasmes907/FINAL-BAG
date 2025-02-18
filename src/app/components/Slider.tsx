@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,9 +29,11 @@ const slides = [
 
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const intervalRef = useRef(null); // Ref for the interval
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
-  const handleSlideChange = (index) => {
+  const handleSlideChange = (index: number) => {
     setCurrentIndex(index);
   };
 
@@ -51,6 +52,23 @@ const Slider = () => {
     }
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.changedTouches[0].screenX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    touchEndX.current = e.changedTouches[0].screenX;
+    if (touchStartX.current - touchEndX.current > 50) {
+      // Swipe left
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    } else if (touchEndX.current - touchStartX.current > 50) {
+      // Swipe right
+      setCurrentIndex(
+        (prevIndex) => (prevIndex - 1 + slides.length) % slides.length
+      );
+    }
+  };
+
   useEffect(() => {
     startSlideshow();
 
@@ -61,7 +79,11 @@ const Slider = () => {
   }, []);
 
   return (
-    <div className="h-[calc(100vh-80px)] bg-slate-200 mt-20 w-full flex items-center justify-center overflow-hidden relative ">
+    <div
+      className="h-[calc(100vh-80px)] bg-slate-200 -mt-28 -mb-1 md:mt-2 lg:mt-20 w-full flex items-center justify-center overflow-hidden relative"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="relative w-full h-full">
         {slides.map((slide, index) => (
           <div
@@ -108,8 +130,8 @@ const Slider = () => {
                     src={slide.img}
                     alt={slide.title}
                     fill
-                    sizes="100%"
                     className="object-cover rounded-lg shadow-none"
+                    sizes="(max-width: 768px) 250px, (max-width: 1024px) 350px, 400px"
                   />
                 </div>
               </div>
