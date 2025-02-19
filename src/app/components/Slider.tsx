@@ -80,7 +80,7 @@ const Slider = () => {
 
   return (
     <div
-      className="h-[calc(100vh-80px)] bg-slate-200 -mt-28 -mb-1 md:mt-2 lg:mt-20 w-full flex items-center justify-center overflow-hidden relative"
+      className="h-[calc(100vh-80px)] bg-slate-200 mt-10 -mb-1 md:mt-2 lg:mt-20 w-full flex items-center justify-center overflow-hidden relative"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >

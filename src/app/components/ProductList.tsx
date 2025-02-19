@@ -263,8 +263,8 @@ const Products = () => {
 
             {/* Ad Banner After 4 Products on Mobile and 8 on Desktop */}
             {(index + 1) % (isMobile ? 4 : 8) === 0 && (
-              <div className="col-span-2 lg:col-span-4 flex justify-center items-center bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-semibold text-xl rounded-md h-10 shadow-lg mt-5 mb-5">
-                📢 ልዩ ቅናሽ፡ በጅምላ ትእዛዝ 10% ቅናሽ ያግኙ! አሁን ይዘዙ!{" "}
+              <div className="col-span-2 lg:col-span-4 flex justify-center items-center bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-semibold text-lg md:text-xl rounded-md h-12 shadow-lg mt-5 mb-5 px-4 py-2 text-center">
+                📢 ልዩ ቅናሽ፡ በጅምላ ትእዛዝ 10% ቅናሽ ያግኙ! አሁን ይዘዙ!
               </div>
             )}
           </React.Fragment>

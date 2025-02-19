@@ -8,7 +8,7 @@ import NavLinks from "./NavLinks";
 
 const Navbar = () => {
   return (
-    <div className="fixed  top-0 left-0 w-full h-20 px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-64 bg-white shadow-md z-50">
+    <div className="fixed  top-0 left-0  w-full h-20 px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-64 bg-white shadow-md z-50">
       {/* MOBILE  */}
       <div className="h-full flex items-center justify-between md:hidden">
         <Link href="/">
