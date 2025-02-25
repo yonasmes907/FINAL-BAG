@@ -148,14 +148,24 @@ const Products = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
+  // const handleOrder = (item: any) => {
+  //   const message = encodeURIComponent(
+  //     `ሰላም! ማዘዝ እፈልጋለሁ\n\n🛍  የምርት ስም:- ${item.name}\n💰 ዋጋ:- $${item.price}\n📦 የምርት ዓይነት:- ${item.quality}\n\nተጨማሪ ዝርዝሮችን እፈልጋለሁ::`
+  //   );
+  //   const telegramLink = `https://t.me/Tnksgod12?text=${message}`;
+  //   window.open(telegramLink, "_blank");
+  // };
   const handleOrder = (item: any) => {
     const message = encodeURIComponent(
-      `ሰላም! ማዘዝ እፈልጋለሁ\n\n🛍  የምርት ስም:- ${item.name}\n💰 ዋጋ:- $${item.price}\n📦 የምርት ዓይነት:- ${item.quality}\n\nተጨማሪ ዝርዝሮችን እፈልጋለሁ::`
+      `ሰላም! ማዘዝ እፈልጋለሁ%0A%0A🛍  የምርት ስም:- ${item.name}%0A💰 ዋጋ:- $${item.price}%0A📦 የምርት ዓይነት:- ${item.quality}%0A%0Aተጨማሪ ዝርዝሮችን እፈልጋለሁ::`
     );
-    const telegramLink = `https://t.me/Tnksgod12?text=${message}`;
-    window.open(telegramLink, "_blank");
-  };
 
+    const telegramLink = `https://t.me/Tnksgod12?text=${message}`;
+
+    setTimeout(() => {
+      window.open(telegramLink, "_blank");
+    }, 100); // Small delay to avoid pop-up blocking issues
+  };
   return (
     <div className="container mx-auto px-4 py-8 mt-20">
       <h2 className="text-2xl font-bold underline text-center mb-6">
@@ -183,7 +193,7 @@ const Products = () => {
             </div>
             <button
               onClick={() => handleOrder(item)}
-              className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg w-full hover:bg-blue-700 transition"
+              className="mt-4 bg-red-600 text-white px-4 py-2 rounded-lg w-full hover:bg-red-700 transition"
             >
               Order Now
             </button>
