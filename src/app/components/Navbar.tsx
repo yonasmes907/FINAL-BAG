@@ -42,7 +42,13 @@ const Navbar = () => {
         {/* Left Side (Logo and Navigation Links) */}
         <div className="flex items-center gap-10">
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/logo1.png" alt="Logo" width={32} height={32} />
+            <Image
+              src="/logo1.png"
+              alt="Logo"
+              width={32}
+              height={32}
+              className="w-auto h-auto"
+            />
             <div className="text-2xl font-bold tracking-wide text-gray-800 mr-40">
               BYY
             </div>

@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import React from "react";
-
 const products = [
   {
     id: 1,
@@ -137,16 +135,6 @@ const products = [
 ];
 
 const Products = () => {
-  const [orderedItem, setOrderedItem] = useState(null);
-
-  const handleOrder = (item: any) => {
-    setOrderedItem(item);
-    const message = encodeURIComponent(
-      `ሰላም! ማዘዝ እፈልጋለሁ\n\n🛍  የምርት ስም:- ${item.name}\n💰 ዋጋ:- $${item.price}\n📦 የምርት ዓይነት:- ${item.quality}\n\nተጨማሪ ዝርዝሮችን እፈልጋለሁ::`
-    );
-    const telegramLink = `https://t.me/Tnksgod12?text=${message}`;
-    window.open(telegramLink, "_blank");
-  };
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -160,60 +148,53 @@ const Products = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  return (
-    <div className="mt-40 px-4">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-800">
-          <span className="text-red-600">Duplex</span> የወረቀት ቦርሳዎች
-        </h1>
-        <p className="text-lg text-gray-500 mt-2">
-          Explore high-quality, stylish, and affordable paper bags for every
-          occasion.
-        </p>
-      </div>
+  const handleOrder = (item: any) => {
+    const message = encodeURIComponent(
+      `ሰላም! ማዘዝ እፈልጋለሁ\n\n🛍  የምርት ስም:- ${item.name}\n💰 ዋጋ:- $${item.price}\n📦 የምርት ዓይነት:- ${item.quality}\n\nተጨማሪ ዝርዝሮችን እፈልጋለሁ::`
+    );
+    const telegramLink = `https://t.me/Tnksgod12?text=${message}`;
+    window.open(telegramLink, "_blank");
+  };
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {products.map((product, index) => (
-          <React.Fragment key={product.id}>
-            <div className="border-x-2 border-zinc-950 rounded-md p-3 w-full flex flex-col gap-4">
-              <div className="relative w-full h-80">
-                <Image
-                  src={product.img1}
-                  alt={product.name}
-                  fill
-                  sizes="23vw"
-                  className="absolute object-cover rounded-md z-10 hover:opacity-0 transition-opacity ease-in duration-500"
-                />
-                <Image
-                  src={product.img2}
-                  alt={product.name}
-                  fill
-                  sizes="23vw"
-                  className="absolute object-cover rounded-md"
-                />
-              </div>
-              <div className="flex justify-between">
-                <span className="text-xl font-bold">{product.name}</span>
-                <span className="text-xl font-bold text-black">
-                  ${product.price}
-                </span>
-              </div>
-              <div className="text-lg text-gray-500">{product.quality}</div>
-              <button
-                onClick={() => handleOrder(product)}
-                className="rounded-2xl bg-red-600 text-white py-2 w-max px-4 text-xs transition-all duration-300 ease-in-out hover:bg-red-700 hover:ring-red-500"
-              >
-                Order This Item
-              </button>
+  return (
+    <div className="container mx-auto px-4 py-8 mt-20">
+      <h2 className="text-2xl font-bold underline text-center mb-6">
+        Dulex የወረቀት ቦርሳዎች
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products.map((item, index) => (
+          <div
+            key={item.id}
+            className="bg-white rounded-lg shadow-lg p-4 flex flex-col items-center justify-between min-h-[400px]"
+          >
+            <div className="w-full h-48 relative">
+              <Image
+                src={item.img1}
+                alt={item.name}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg"
+              />
             </div>
+            <div className="text-center mt-4 flex-grow">
+              <h2 className="text-lg font-semibold mt-2">{item.name}</h2>
+              <p className="text-gray-700">💰 ዋጋ: ${item.price}</p>
+              <p className="text-gray-700">📦 የምርት ዓይነት: {item.quality}</p>
+            </div>
+            <button
+              onClick={() => handleOrder(item)}
+              className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg w-full hover:bg-blue-700 transition"
+            >
+              Order Now
+            </button>
 
             {/* Ad Banner After 4 Products on Mobile and 8 on Desktop */}
-            {(index + 1) % (isMobile ? 4 : 8) === 0 && (
+            {/* {(index + 1) % (isMobile ? 4 : 8) === 0 && (
               <div className="col-span-2 lg:col-span-4 flex justify-center items-center bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-semibold text-lg md:text-xl rounded-md h-12 shadow-lg mt-5 mb-5 px-4 py-2 text-center">
                 📢 ልዩ ቅናሽ፡ በጅምላ ትእዛዝ 10% ቅናሽ ያግኙ! አሁን ይዘዙ!
               </div>
-            )}
-          </React.Fragment>
+            )} */}
+          </div>
         ))}
       </div>
     </div>
