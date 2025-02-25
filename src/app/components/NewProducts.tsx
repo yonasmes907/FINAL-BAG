@@ -86,7 +86,7 @@ const Products = () => {
   // };
   const handleOrder = (item: any) => {
     const message = encodeURIComponent(
-      `ሰላም! ማዘዝ እፈልጋለሁ%0A%0A🛍  የምርት ስም:- ${item.name}%0A💰 ዋጋ:- $${item.price}%0A📦 የምርት ዓይነት:- ${item.quality}%0A%0Aተጨማሪ ዝርዝሮችን እፈልጋለሁ::`
+      `ሰላም! ማዘዝ እፈልጋለሁ🛍  የምርት ስም:- ${item.name}💰 ዋጋ:- $${item.price}📦 የምርት ዓይነት:- ${item.quality}ተጨማሪ ዝርዝሮችን እፈልጋለሁ::`
     );
 
     const telegramLink = `https://t.me/Tnksgod12?text=${message}`;
